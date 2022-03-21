@@ -30,7 +30,19 @@ function Game() {
 
     const jumpTo = (step) => {
         setStepNumber(step); 
-        setxIsNext(step%2 == 0); 
+        setxIsNext(step%2 === 0); 
+    }
+
+    const renderMoves = () => {
+        history.map((_step, move) => {
+            const destination = move ? `Go to move number ${move}` : "Go to Start";
+            console.log(destination);  
+            return(
+                <li key={move}>
+                    <button onClick={() => jumpTo(move)}>{destination}</button>
+                </li>
+            ); 
+        }); 
     }
 
 
@@ -38,6 +50,13 @@ function Game() {
         <>
         <h1>Tic Tac Toe Game</h1>
         <Board squares={history[stepNumber]} onClick={handleClick}></Board>
+        <div className="info-wrapper">
+            <div>
+                <h3>History</h3>
+                {renderMoves()}
+            </div>
+            <h3>{winner ? "Winner: " + winner : "Next Player" + xO}</h3>
+        </div>
         </>
      );
 }
