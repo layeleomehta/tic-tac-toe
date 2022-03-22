@@ -46,7 +46,7 @@ function Game() {
 
     return ( 
         <>
-        <h1>React Tic Tac Toe - With Hooks</h1>
+        <h1>Tic Tac Toe</h1>
         <Board squares={history[stepNumber]} onClick={handleClick} />
         <div className="info-wrapper">
           <div>
