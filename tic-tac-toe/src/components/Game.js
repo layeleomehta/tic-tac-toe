@@ -33,32 +33,30 @@ function Game() {
         setxIsNext(step%2 === 0); 
     }
 
-    const renderMoves = () => {
+    const renderMoves = () =>
         history.map((_step, move) => {
-            const destination = move ? `Go to move number ${move}` : "Go to Start";
-            console.log(destination);  
-            return(
-                <li key={move}>
-                    <button onClick={() => jumpTo(move)}>{destination}</button>
-                </li>
-            ); 
-        }); 
-    }
+            const destination = move ? `Go to move #${move}` : "Go to Start";
+            return (
+              <li key={move}>
+                <button onClick={() => jumpTo(move)}>{destination}</button>
+              </li>
+            );
+          });
 
 
     return ( 
         <>
-        <h1>Tic Tac Toe Game</h1>
-        <Board squares={history[stepNumber]} onClick={handleClick}></Board>
+        <h1>React Tic Tac Toe - With Hooks</h1>
+        <Board squares={history[stepNumber]} onClick={handleClick} />
         <div className="info-wrapper">
-            <div>
-                <h3>History</h3>
-                {renderMoves()}
-            </div>
-            <h3>{winner ? "Winner: " + winner : "Next Player" + xO}</h3>
+          <div>
+            <h3>History</h3>
+            {renderMoves()}
+          </div>
+          <h3>{winner ? "Winner: " + winner : "Next Player: " + xO}</h3>
         </div>
-        </>
+      </>
      );
-}
+}; 
 
 export default Game;
